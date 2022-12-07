@@ -1,0 +1,27 @@
+<h2>EMPANADAS</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Cantidad</th>
+            <th>Comprar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let variedad of variedades" [ngClass]="{'clearance':variedad.clearance}">
+            <td><img [src]="variedad.image" [alt]="variedad.nombre"></td>
+            <td>{{variedad.nombre}}</td>
+            <td>{{variedad.precio | currency}}</td>
+            <td><span class="badge bg-info text-dark" *ngIf="variedad.stock ==0">No hay Stock</span></td>
+            <td>
+                <app-input-integer [(cantidad)]="variedad.cantidad" [max]="variedad.stock" *ngIf="variedad.stock" (maxReached)="maxReached($event)" ></app-input-integer>
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="addToCart(variedad)">Comprar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

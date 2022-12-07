@@ -1,0 +1,4 @@
+<button class="btn btn-outline-primary" (click)="restarCantidad()">-</button>
+    <input type="text" [(ngModel)]="cantidad" 
+    (keyup)="cambiarCantidad($event)">
+<button class="btn btn-outline-primary" (click)="sumarCantidad()" >+</button>
